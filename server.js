@@ -1,11 +1,16 @@
 const express = require('express');
 const cors = require('cors');
 const PORT = process.env.PORT || 5000;
+const connectDB = require('./config/db');
+
+
+connectDB();
 
 // Definte Routes
 
 
 const app = express();
+app.use(express.json({extended: false}));
 
 app.use('/api/users', require('./routes/users'));
 app.use('/api/auth', require('./routes/auth'));
